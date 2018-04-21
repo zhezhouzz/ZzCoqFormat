@@ -1,0 +1,3 @@
+[
+    {"keys": ["shift+f2"], "command": "zz_coq_format" }
+]
