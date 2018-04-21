@@ -1,10 +1,12 @@
-import sublime
-import sublime_plugin
-import subprocess
 import os
+import subprocess
+import sublime_plugin
 
 
 class ZzCoqFormatCommand(sublime_plugin.TextCommand):
+
+    """zz_coq_format"""
+
     def run(self, edit):
         full_path = self.view.file_name()
         if full_path:
@@ -23,6 +25,7 @@ class ZzCoqFormatCommand(sublime_plugin.TextCommand):
         output = subprocess.Popen(['coqc', '-beautify', full_path], stdout=subprocess.PIPE)
         if output.communicate()[1]:
             print(output.communicate()[1])
-        output = subprocess.Popen(['mv', full_path+".beautified", full_path], stdout=subprocess.PIPE)
+        output = subprocess.Popen(['mv', full_path+".beautified", full_path],
+                                  stdout=subprocess.PIPE)
         if output.communicate()[1]:
             print(output.communicate()[1])
